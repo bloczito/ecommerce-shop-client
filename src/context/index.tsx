@@ -5,7 +5,7 @@ import { BasketContextProvider } from "./BasketContext";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { ShopContextProvider } from "./ShopContext";
 import { SnackbarProvider } from "notistack";
-import Fade from "@mui/material/Fade";
+import { UserContextProvider } from "./UserContext";
 
 
 const theme = createTheme({
@@ -30,19 +30,21 @@ const theme = createTheme({
 });
 
 const AppContextProvider: React.FC<{children: ReactElement}> = ({children}) => (
-	<ShopContextProvider>
-		<ProductsContextProvider>
-			<NotificationContextProvider>
-				<BasketContextProvider>
-					<SnackbarProvider maxSnack={5} variant="success" autoHideDuration={800}>
-						<ThemeProvider theme={theme}>
-							{children}
-						</ThemeProvider>
-					</SnackbarProvider>
-				</BasketContextProvider>
-			</NotificationContextProvider>
-		</ProductsContextProvider>
-	</ShopContextProvider>
+	<UserContextProvider>
+		<ShopContextProvider>
+			<ProductsContextProvider>
+				<NotificationContextProvider>
+					<BasketContextProvider>
+						<SnackbarProvider maxSnack={5} variant="success" autoHideDuration={800}>
+							<ThemeProvider theme={theme}>
+								{children}
+							</ThemeProvider>
+						</SnackbarProvider>
+					</BasketContextProvider>
+				</NotificationContextProvider>
+			</ProductsContextProvider>
+		</ShopContextProvider>
+	</UserContextProvider>
 )
 
 

@@ -26,3 +26,8 @@ export interface BasketContextState {
 	removeItem: (productId: number, all?: boolean) => void;
 }
 
+export interface UserContextState {
+	token?: string;
+	signOut: () => void;
+}
+

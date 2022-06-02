@@ -14,6 +14,7 @@ import ProductsDetailsView from "./views/ProductsDetailsView/ProductsDetailsView
 import AppContextProvider from "./context";
 import Notification from "./components/Notification/Notification";
 import BasketView from "./views/BasketView/BasketView";
+import SignInView from "./views/SignInView/SignInView";
 
 
 
@@ -31,6 +32,7 @@ root.render(
                     <Route path="/products/:id" element={<ProductsDetailsView/>}/>
                     <Route path="/products" element={<ProductsView/>}/>
                     <Route path="/basket" element={<BasketView/>}/>
+                    <Route path="/signIn" element={<SignInView/>}/>
                     <Route path="/"  element={<App/>}/>
                 </Routes>
                 <ScrollTop/>
