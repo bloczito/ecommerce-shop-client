@@ -1,11 +1,22 @@
 import React, { useContext } from "react";
-import { AppBar, Badge, Box, Grid, IconButton, Slide, Toolbar, Typography, useScrollTrigger } from "@mui/material";
+import {
+	AppBar,
+	Badge,
+	Box,
+	Button,
+	Grid,
+	IconButton,
+	Slide,
+	Toolbar,
+	Typography,
+	useScrollTrigger
+} from "@mui/material";
 import { ShopContext } from "../../context/ShopContext";
 import NavbarCategory from "../NavbarCategory/NavbarCategory";
 import { BasketContext } from "../../context/BasketContext";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 
 interface HideOnScrollProps {
@@ -28,6 +39,7 @@ const HideOnScroll: React.FC<HideOnScrollProps> = ({children}) => {
 const Navbar: React.FC = () => {
 	const {categories} = useContext(ShopContext);
 	const {items} = useContext(BasketContext);
+	const {token, signOut} = useContext(UserContext);
 	const navigation = useNavigate()
 
 	return (
@@ -58,6 +70,17 @@ const Navbar: React.FC = () => {
 							</Grid>
 
 							<Grid>
+								{token ? (
+									<Button onClick={signOut} color="inherit">
+										Wyloguj
+									</Button>
+								) : (
+									<Button onClick={() => navigation("/signIn")} color="inherit">
+										Zaloguj
+									</Button>
+								)}
+
+
 								<IconButton
 									color="inherit"
 									onClick={() => navigation("/basket")}
