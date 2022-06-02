@@ -8,8 +8,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 
 const ProductsView: React.FC = () => {
 	const {products, setProducts} = useContext(ProductsContext)
-	// const {addItem} = useContext(BasketContext);
-	// const {openNotification} = useContext(NotificationContext);
+
 	const [params] = useSearchParams();
 
 	useEffect(() => {

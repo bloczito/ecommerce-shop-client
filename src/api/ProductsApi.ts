@@ -5,9 +5,6 @@ export const fetchProducts = async (
 	category?: string,
 	subcategory?: string
 ): Promise<Product[]> => {
-	const categoryQ = category ? `category=${category}` : "";
-	const subcategoryQ = subcategory ? `&subcategory=${subcategory}` : "";
-
 	return await axios.get(`/products`, {
 		params: {
 			category,

@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Product } from "../types";
 
 
 const useBasket = (label: String) => {
 	const [basket, setBasket] = useState<Product[]>([]);
 
-	// useEffect(() => {
-		// console.info("BASKET2", basket);
-	// }, [])
-	console.info(label, basket);
 
 	const addProduct = (product: Product) => {
 		console.log("Adding", product)

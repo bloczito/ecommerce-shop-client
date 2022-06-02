@@ -25,10 +25,6 @@ const NavbarCategory:React.FC<NavbarCategoryProps> = ({category}) => {
 		setAnchorEl(null);
 	};
 
-	const handleCategoryChosen = () => {
-		window.history.pushState({}, "", getLink(name))
-	}
-
 
 	return (
 	  <>

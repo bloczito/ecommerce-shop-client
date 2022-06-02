@@ -6,7 +6,7 @@ interface ScrollTopProps {
 	children?: React.ReactElement
 }
 
-const ScrollTop: React.FC<ScrollTopProps> = ({children}) => {
+const ScrollTop: React.FC<ScrollTopProps> = () => {
 	const trigger = useScrollTrigger({
 		target: window,
 		disableHysteresis: true,
