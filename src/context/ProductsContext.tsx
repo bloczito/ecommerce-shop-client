@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 const defaultState: ProductsContextState = {
 	products: [],
-	setProducts: () => {},
+	setProducts: () => console.error("No function defined"),
 	getById: () => undefined
 }
 

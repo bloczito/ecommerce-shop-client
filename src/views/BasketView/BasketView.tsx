@@ -5,7 +5,7 @@ import BasketItemCard from "../../components/BasketItem/BasketItemCard";
 
 
 const BasketView: React.FC = () => {
-	const {items, addItem, removeItem} = useContext(BasketContext)
+	const {items} = useContext(BasketContext)
 
 	return (
 		<Container maxWidth="sm">

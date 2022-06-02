@@ -37,11 +37,7 @@ const NavbarCategory:React.FC<NavbarCategoryProps> = ({category}) => {
 			  color="inherit"
 			  disableElevation
 			  size="large"
-			  // onMouseOver={handleShowMenu}
-			  onClick={!!subcategories?.length ? handleShowMenu : () => {}}
-			  // onMouseEnter={handleShowMenu}
-			  // onMouseLeave={handleHideMenu}
-			  // onMouseOver={!!subcategories?.length ? handleShowMenu : () => {}}
+			  onClick={!!subcategories?.length ? handleShowMenu : undefined}
 
 		  >
 			  {title}

@@ -3,8 +3,8 @@ import React, { useState } from "react";
 
 const defaultValue: BasketContextState = {
 	items: [],
-	addItem: () => {},
-	removeItem: () => {}
+	addItem: () => console.error("No function defined"),
+	removeItem: () => console.error("No function defined")
 };
 
 export const BasketContext = React.createContext(defaultValue);

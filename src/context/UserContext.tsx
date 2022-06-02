@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const defaultState: UserContextState = {
 	token: undefined,
-	signOut: () => {}
+	signOut: () => undefined
 };
 
 export const UserContext = createContext(defaultState);

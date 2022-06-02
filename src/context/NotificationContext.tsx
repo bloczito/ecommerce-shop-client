@@ -6,8 +6,8 @@ import { NotificationType } from "../types/MiscTypes";
 const defaultState: NotificationContextState = {
 	isOpen: false,
 	message: null,
-	openNotification: () => {},
-	closeNotification: () => {}
+	openNotification: () => console.error("No function defined"),
+	closeNotification: () => console.error("No function defined")
 }
 export const NotificationContext = React.createContext(defaultState);
 
