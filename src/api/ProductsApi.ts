@@ -3,12 +3,14 @@ import axios from "../config/AxiosConfig";
 
 export const fetchProducts = async (
 	category?: string,
-	subcategory?: string
+	subcategory?: string,
+	random?: boolean
 ): Promise<Product[]> => {
 	return await axios.get(`/products`, {
 		params: {
 			category,
-			subcategory
+			subcategory,
+			random
 		}
 	})
 }
