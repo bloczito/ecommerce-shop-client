@@ -1,15 +1,14 @@
 import { Product } from "../types";
 import axios from "../config/AxiosConfig";
 
-export const fetchProducts = async (
+export const fetchProducts = async (params: {
 	category?: string,
-	subcategory?: string
-): Promise<Product[]> => {
+	subcategory?: string,
+	random?: boolean
+}): Promise<Product[]> => {
+
 	return await axios.get(`/products`, {
-		params: {
-			category,
-			subcategory
-		}
+		params
 	})
 }
 

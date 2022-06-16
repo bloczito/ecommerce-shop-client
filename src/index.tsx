@@ -17,6 +17,7 @@ import SignInView from "./views/SignInView/SignInView";
 import PaymentView from "./views/PaymentView/PaymentView";
 import AccountInfoView from "./views/AccountInfoView/AccountInfoView";
 import OrdersView from "./views/OrdersView/OrdersView";
+import LandingPage from "./views/LandingPage/LandingPage";
 
 
 
@@ -39,7 +40,7 @@ root.render(
                             <Route path="/signIn" element={<SignInView/>}/>
                             <Route path="/account" element={<AccountInfoView/>} />
                             <Route path="/orders" element={<OrdersView/>} />
-                            <Route path="/"  element={<App/>}/>
+                            <Route path="/"  element={<LandingPage/>}/>
                         </Routes>
                         <ScrollTop/>
                     </>
