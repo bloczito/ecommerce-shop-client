@@ -9,7 +9,7 @@ const LandingPage: FC = () => {
 	const [products, setProducts] = useState<Product[]>([]);
 
 	useEffect(() => {
-		fetchProducts(undefined, undefined, true)
+		fetchProducts({random: true})
 			.then(setProducts)
 	}, [])
 

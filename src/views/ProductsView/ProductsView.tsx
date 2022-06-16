@@ -12,10 +12,10 @@ const ProductsView: React.FC = () => {
 	const [params] = useSearchParams();
 
 	useEffect(() => {
-		fetchProducts(
-			params.get("category") || undefined,
-			params.get("subcategory") || undefined,
-		).then(res => setProducts(res))
+		fetchProducts({
+			category: params.get("category") || undefined,
+			subcategory: params.get("subcategory") || undefined,
+		}).then(res => setProducts(res))
 	}, [params, params.get("category"), params.get("subcategory")])
 
 
