@@ -1,7 +1,10 @@
+import { Moment } from "moment";
+
 export interface Product {
 	id: number;
 	name: string;
 	price: number;
+	url: string;
 	description?: string;
 	brand: Brand;
 	category: Category;
@@ -30,4 +33,70 @@ export interface CategoryWithSub extends Category{
 export interface BasketItem {
 	product: Product;
 	quantity: number;
+}
+
+export interface ContactData {
+	name: string,
+	email: string,
+	city: string,
+	street: string,
+	houseNumber: string,
+	postcode: string
+}
+
+export interface AccountData {
+	customerName?: string;
+
+	city?: string;
+	street?: string;
+	postcode?: string;
+
+	// password: string;
+	// confirmPassword: string;
+}
+
+export interface Order {
+	id: number;
+	customerName: string;
+	email: string;
+	orderNumber: string;
+	orderDate: Moment,
+	city: string,
+	street: string,
+	postcode: string,
+	items: CartItem[]
+}
+
+export interface CartProduct extends Omit<Product, "brand"> {
+	brand: string;
+}
+
+export interface CartItem {
+	id: number;
+	quantity: number;
+	product: CartProduct
+}
+
+
+export interface PaymentResponse {
+	clientSecret: string
+}
+
+export interface NewOrder {
+	customerName: string;
+	email: string;
+
+	city: string;
+	street: string;
+	postcode: string;
+
+	items: {
+		productId: number;
+		quantity: number;
+	}[]
+}
+
+export interface CreateOrderResult {
+	orderId: number;
+	orderNumber: string;
 }

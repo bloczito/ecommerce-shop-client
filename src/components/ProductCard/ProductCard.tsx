@@ -1,6 +1,6 @@
 import React from "react";
 import { Product } from "../../types";
-import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography, CardMediaProps } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
@@ -16,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
 				<CardMedia
 					component="img"
 					height={400}
-					image="https://img01.ztat.net/article/spp-media-p1/1ce13c43ed1530699ef8943cdfdf5497/3281da7782f24a02a5b34ffff422af45.jpg?imwidth=1800"
+					image={product.url}
 					alt="blouse"
 				/>
 				<CardContent>

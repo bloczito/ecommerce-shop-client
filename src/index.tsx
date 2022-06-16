@@ -12,9 +12,11 @@ import Navbar from "./components/Navbar/Navbar";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
 import ProductsDetailsView from "./views/ProductsDetailsView/ProductsDetailsView";
 import AppContextProvider from "./context";
-import Notification from "./components/Notification/Notification";
 import BasketView from "./views/BasketView/BasketView";
 import SignInView from "./views/SignInView/SignInView";
+import PaymentView from "./views/PaymentView/PaymentView";
+import AccountInfoView from "./views/AccountInfoView/AccountInfoView";
+import OrdersView from "./views/OrdersView/OrdersView";
 
 
 
@@ -24,22 +26,27 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
-        <AppContextProvider>
+    // <React.StrictMode>
             <BrowserRouter>
-                <Navbar/>
-                <Routes>
-                    <Route path="/products/:id" element={<ProductsDetailsView/>}/>
-                    <Route path="/products" element={<ProductsView/>}/>
-                    <Route path="/basket" element={<BasketView/>}/>
-                    <Route path="/signIn" element={<SignInView/>}/>
-                    <Route path="/"  element={<App/>}/>
-                </Routes>
-                <ScrollTop/>
+                <AppContextProvider>
+                    <>
+                        <Navbar/>
+                        <Routes>
+                            <Route path="/products/:id" element={<ProductsDetailsView/>}/>
+                            <Route path="/products" element={<ProductsView/>}/>
+                            <Route path="/basket" element={<BasketView/>}/>
+                            <Route path="/payment" element={<PaymentView/>}/>
+                            <Route path="/signIn" element={<SignInView/>}/>
+                            <Route path="/account" element={<AccountInfoView/>} />
+                            <Route path="/orders" element={<OrdersView/>} />
+                            <Route path="/"  element={<App/>}/>
+                        </Routes>
+                        <ScrollTop/>
+                    </>
 				{/*<Notification/>*/}
+                </AppContextProvider>
             </BrowserRouter>
-        </AppContextProvider>
-    </React.StrictMode>
+    // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -7,10 +7,11 @@ import { BasketContext } from "../../context/BasketContext";
 
 
 interface BasketItemProps {
-	item: BasketItem
+	item: BasketItem,
+	summary?: boolean
 }
 
-const BasketItemCard: React.FC<BasketItemProps> = ({item}) => {
+const BasketItemCard: React.FC<BasketItemProps> = ({item, summary}) => {
 	const {product, quantity} = item;
 	const {addItem, removeItem} = useContext(BasketContext)
 
@@ -27,11 +28,11 @@ const BasketItemCard: React.FC<BasketItemProps> = ({item}) => {
 			<CardMedia
 				component="img"
 				sx={{maxWidth: 140, maxHeight: 150}}
-				image="https://img01.ztat.net/article/spp-media-p1/6679a0aeaacd3e808aeefe9c52809b0d/f4ab0643612946ae885e511c53873da2.jpg?imwidth=1800&filter=packshot"
+				image={item.product.url}
 			/>
 
 			<Grid container justifyContent="space-between">
-				<Box sx={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+				<Box sx={{display: "flex", flexDirection: "column", justifyContent: summary ? "flex-start" : "space-between"}}>
 					<Grid>
 						<Typography
 							component="div"
@@ -48,28 +49,52 @@ const BasketItemCard: React.FC<BasketItemProps> = ({item}) => {
 						</Typography>
 					</Grid>
 
-					<Grid>
-						<Typography>
-							{product.price * quantity} zł
+					{!!summary ? (
+						<Typography mt={2} variant="body2">
+							{item.product.description}
 						</Typography>
-						<Typography variant="caption">
-							{quantity} x {product.price}
-						</Typography>
-					</Grid>
+					) : (
+						<Grid>
+							<Typography>
+								{product.price * quantity} zł
+							</Typography>
+							<Typography variant="caption">
+								{quantity} x {product.price}
+							</Typography>
+						</Grid>
+					)}
 				</Box>
-				<Box sx={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
-					<QuantityPicker
-						quantity={quantity}
-						addItem={() => addItem(product)}
-						removeItem={() => removeItem(product.id)}
-					/>
+				<Box sx={{display: "flex", flexDirection: "column", justifyContent: summary ? "flex-start" : "space-between"}}>
+					{!!summary ? (
+						<>
+							<Grid>
+								<Typography>
+									{product.price * quantity} zł
+								</Typography>
+								<Typography variant="caption">
+									{quantity} x {product.price}
+								</Typography>
+							</Grid>
+						</>
+					) : (
+						<>
+							<QuantityPicker
+								quantity={quantity}
+								addItem={() => addItem(product)}
+								removeItem={() => removeItem(product.id)}
+							/>
 
-					<IconButton
-						color="error"
-						onClick={() => removeItem(product.id, true)}
-					>
-						<DeleteForeverIcon fontSize="large"/>
-					</IconButton>
+							<Box sx={{width: "100%", display: "flex", justifyContent: "flex-end"}}>
+								<IconButton
+									color="error"
+									onClick={() => removeItem(product.id, true)}
+									sx={{width: 55}}
+								>
+									<DeleteForeverIcon fontSize="large"/>
+								</IconButton>
+							</Box>
+						</>
+					)}
 				</Box>
 
 			</Grid>

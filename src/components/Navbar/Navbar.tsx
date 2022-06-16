@@ -17,6 +17,7 @@ import { BasketContext } from "../../context/BasketContext";
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import AccountMenu from "../AccountMenu/AccountMenu";
 
 
 interface HideOnScrollProps {
@@ -50,16 +51,19 @@ const Navbar: React.FC = () => {
 						<Grid container justifyContent="space-between">
 							<Grid item>
 								<Grid container justifyContent="start">
-									<Typography
-										variant="h6"
-										component="div"
-										marginRight={3}
-									>
-										Sklep
-									</Typography>
+									<Button onClick={() => navigation("/")}>
+										<Typography
+											variant="h6"
+											component="div"
+											marginRight={3}
+											color="black"
+										>
+											Shopp
+										</Typography>
+									</Button>
 
-									<Box sx={{flexGrow: 1, display: {xs: "flex"}}}>
-										{categories?.reverse()?.map(c => (
+									<Box sx={{display: "flex", flexGrow: 1, marginLeft: 2, gap: 2}}>
+										{categories?.map(c => (
 											<NavbarCategory
 												key={c.name}
 												category={c}
@@ -70,11 +74,7 @@ const Navbar: React.FC = () => {
 							</Grid>
 
 							<Grid>
-								{token ? (
-									<Button onClick={signOut} color="inherit">
-										Wyloguj
-									</Button>
-								) : (
+								{!token && (
 									<Button onClick={() => navigation("/signIn")} color="inherit">
 										Zaloguj
 									</Button>
@@ -89,6 +89,8 @@ const Navbar: React.FC = () => {
 										<ShoppingBasketIcon/>
 									</Badge>
 								</IconButton>
+
+								{ !!token && <AccountMenu/> }
 							</Grid>
 						</Grid>
 					</Toolbar>

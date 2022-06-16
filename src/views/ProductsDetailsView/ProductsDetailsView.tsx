@@ -40,7 +40,7 @@ const ProductsDetailsView: React.FC = () => {
 				<Grid container spacing={2} justifyContent="space-between" marginTop={3}>
 					<Grid item xs={6}>
 						<Grid container justifyContent="center">
-							<Image/>
+							<Image url={product.url}/>
 						</Grid>
 					</Grid>
 					<Grid item xs={6}>

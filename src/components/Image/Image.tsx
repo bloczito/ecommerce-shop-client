@@ -1,11 +1,11 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 
 interface ImageProps {
 	url?: string
 }
 
-const Image: React.FC<ImageProps> = ({url}) => (
+const Image: React.FC<ImageProps & BoxProps> = ({url, ...props}) => (
 	<Box component="div">
 		<Box
 			component="img"
@@ -14,6 +14,7 @@ const Image: React.FC<ImageProps> = ({url}) => (
 				maxWidth: 400
 			}}
 			src={url ?? "https://img01.ztat.net/article/spp-media-p1/5a2054521ea63c76b967129ac00f99e0/53e05d695047435790cf3ffaf5b8e17c.jpg?imwidth=1800"}
+			{...props}
 		/>
 	</Box>
 

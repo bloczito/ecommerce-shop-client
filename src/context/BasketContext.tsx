@@ -1,19 +1,26 @@
 import { BasketContextState, BasketItem, Product } from "../types";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const defaultValue: BasketContextState = {
 	items: [],
 	addItem: () => console.error("No function defined"),
-	removeItem: () => console.error("No function defined")
+	removeItem: () => console.error("No function defined"),
+	clearBasket: () => console.error("No function defined")
 };
 
 export const BasketContext = React.createContext(defaultValue);
 
 export const BasketContextProvider:React.FC<{children: React.ReactElement}> = ({children}) => {
-	const [items, setItems] = useState<BasketItem[]>([]);
+	const [items, setItems] = useState<BasketItem[]>(localStorage.getItem("items") !== null ? JSON.parse(localStorage.getItem("items") || "[]") as BasketItem[] : [])
+	// const [items, setItems] = useState<BasketItem[]>(localStorage.getItem("items") !== null ? JSON.parse(localStorage.getItem("items") || "[]") as BasketItem[] : [])
+
+
+	useEffect(() => {
+			localStorage.setItem("items", JSON.stringify(items))
+	}, [items])
 
 	const addItem = (newProduct: Product) => {
-		if(items.map(({product}) => product).includes(newProduct)) {
+		if(items.map(({product}) => product.id).includes(newProduct.id)) {
 			setItems(prev => prev
 				.map(({product, quantity}) => {
 					return product.id === newProduct.id ?
@@ -37,12 +44,17 @@ export const BasketContextProvider:React.FC<{children: React.ReactElement}> = ({
 		)
 	}
 
+	const clearBasket = () => {
+		setItems([]);
+	}
+
 	return (
 		<BasketContext.Provider
 			value={{
 				items,
 				addItem,
-				removeItem
+				removeItem,
+				clearBasket
 			}}
 		>
 			{children}

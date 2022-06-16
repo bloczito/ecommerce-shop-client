@@ -1,6 +1,8 @@
 import axiosFactory from "axios";
 import Cookies from "js-cookie";
 
+// const {} = useContext(UserContext)
+
 const axios = axiosFactory.create({
 	baseURL: "http://localhost:8080",
 	// transformResponse:
@@ -26,6 +28,11 @@ axios.interceptors.request.use(config => {
 	return config
 })
 
-axios.interceptors.response.use(response => response.data)
+axios.interceptors.response.use(response => {
+
+	// if (response.status === 401)
+
+	return response.data
+})
 
 export default axios;

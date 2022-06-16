@@ -3,7 +3,6 @@ import { BasketItem, CategoryWithSub, Product } from "./index";
 import { NotificationType } from "./MiscTypes";
 
 export interface ShopContextState {
-	products: Product[];
 	categories: CategoryWithSub[];
 }
 
@@ -24,6 +23,7 @@ export interface BasketContextState {
 	items: BasketItem[];
 	addItem: (newProduct: Product) => void;
 	removeItem: (productId: number, all?: boolean) => void;
+	clearBasket: () => void;
 }
 
 export interface UserContextState {
@@ -31,3 +31,7 @@ export interface UserContextState {
 	signOut: () => void;
 }
 
+export interface PaymentContextState {
+	clientSecret?: string,
+	createPayment: (amount: number) => void
+}
