@@ -29,7 +29,7 @@ const SignUpView: FC = () => {
 	const [city, setCity] = useState<string | undefined>(undefined)
 	const [error, setError] = useState<{
 		email?: string;
-		pwd?: string;
+		pwError?: string;
 		confirmPwd?: string;
 		// name?: string;
 		// street?: string;
@@ -61,13 +61,13 @@ const SignUpView: FC = () => {
 
 
 		if (isInvalid(pwd)) {
-			setError(prevState => ({ ...prevState, pwd: "Musisz podać hasło" }));
+			setError(prevState => ({ ...prevState, pwError: "Musisz podać hasło" }));
 			isError = true;
 		} else if (pwd.length < 8) {
-			setError(prevState => ({ ...prevState, pwd: "Hasło powinno posiadać minimum 8 znaków" }));
+			setError(prevState => ({ ...prevState, pwError: "Hasło powinno posiadać minimum 8 znaków" }));
 			isError = true;
 		} else {
-			setError(prevState => ({ ...prevState, pwd: undefined }));
+			setError(prevState => ({ ...prevState, pwError: undefined }));
 		}
 
 		console.log("B")
@@ -127,8 +127,8 @@ const SignUpView: FC = () => {
 					onChange={e => setPwd(e.target.value)}
 					value={pwd}
 					required
-					error={!!error.pwd}
-					helperText={error.pwd}
+					error={!!error.pwError}
+					helperText={error.pwError}
 					InputProps={{inputProps: {minLength: 8, maxLength: 24}}}
 				/>
 
