@@ -9,11 +9,7 @@ const WIDTH = 400;
 const isInvalid = (field: string) => field == undefined  || field === ""
 
 export const validateEmail = (email: string) => {
-	return email
-		.toLowerCase()
-		.match(
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		);
+	return (new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')).test(email.toLowerCase())
 };
 
 const SignUpView: FC = () => {
@@ -31,10 +27,6 @@ const SignUpView: FC = () => {
 		email?: string;
 		pwError?: string;
 		confirmPwd?: string;
-		// name?: string;
-		// street?: string;
-		// postcode?: string;
-		// city?: string
 	}>({});
 
 
@@ -57,8 +49,6 @@ const SignUpView: FC = () => {
 			setError(prevState => ({ ...prevState, email: "Podany adres email jest zajęty" }))
 			isError = true;
 		}
-		console.log("A")
-
 
 		if (isInvalid(pwd)) {
 			setError(prevState => ({ ...prevState, pwError: "Musisz podać hasło" }));
@@ -70,8 +60,6 @@ const SignUpView: FC = () => {
 			setError(prevState => ({ ...prevState, pwError: undefined }));
 		}
 
-		console.log("B")
-
 		if (isInvalid(confirmPwd)) {
 			setError(prevState => ({ ...prevState, confirmPwd: "Musisz potwierdzić hasło" }));
 			isError = true;
@@ -81,16 +69,11 @@ const SignUpView: FC = () => {
 		} else {
 			setError(prevState => ({ ...prevState, confirmPwd: undefined }));
 		}
-		console.log("C")
-
-		console.log(isError)
 
 		if (!isError) {
 			userApi.signUp({ email, password: pwd, name, city, postcode, street })
 				.then(() => navigate("/signIn"))
 		}
-		console.log("D")
-
 	}
 
 	return (

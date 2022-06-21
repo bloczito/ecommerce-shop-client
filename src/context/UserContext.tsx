@@ -21,9 +21,9 @@ export const UserContextProvider: FC<{children: ReactElement}> = ({children}) =>
 		setToken(undefined);
 	}
 
-	const signIn = (token: string) => {
-		setToken(token)
-		Cookies.set("auth-token", token, {expires: moment().add(3600000, "milliseconds").date()})
+	const signIn = (newToken: string) => {
+		setToken(newToken)
+		Cookies.set("auth-token", newToken, {expires: moment().add(3600000, "milliseconds").date()})
 	}
 
 	return (

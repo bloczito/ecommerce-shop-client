@@ -40,7 +40,7 @@ const HideOnScroll: React.FC<HideOnScrollProps> = ({children}) => {
 const Navbar: React.FC = () => {
 	const {categories} = useContext(ShopContext);
 	const {items} = useContext(BasketContext);
-	const {token, signOut} = useContext(UserContext);
+	const {token} = useContext(UserContext);
 	const navigation = useNavigate()
 
 	return (

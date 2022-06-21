@@ -66,7 +66,6 @@ const PaymentView: FC = () => {
 	const navigate = useNavigate();
 
 	const [activeStep, setActiveStep] = useState<number>(new URLSearchParams(useLocation().search).get("redirect_status") === "succeeded" ? 4 : 1);
-	// const [activeStep, setActiveStep] = useState<number>(1);
 	const [clientSecret, setClientSecret] = useState<string | undefined>(undefined);
 	const [createOrderResult, setCreateOrderResult] = useState<CreateOrderResult | null>(null);
 	const [contactData, setContactData] = useState<ContactData>({
