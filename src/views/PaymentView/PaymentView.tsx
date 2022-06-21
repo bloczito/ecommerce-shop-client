@@ -65,10 +65,10 @@ const PaymentView: FC = () => {
 
 	const navigate = useNavigate();
 
-	// const [activeStep, setActiveStep] = useState<number>(new URLSearchParams(useLocation().search).get("redirect_status") === "succeeded" ? 4 : 1);
-	const [activeStep, setActiveStep] = useState<number>(4);
+	const [activeStep, setActiveStep] = useState<number>(new URLSearchParams(useLocation().search).get("redirect_status") === "succeeded" ? 4 : 1);
+	// const [activeStep, setActiveStep] = useState<number>(1);
 	const [clientSecret, setClientSecret] = useState<string | undefined>(undefined);
-	const [createOrderResult, setCreateOrderResult] = useState<CreateOrderResult | null>({ orderId: 23, orderNumber: "202260008" });
+	const [createOrderResult, setCreateOrderResult] = useState<CreateOrderResult | null>(null);
 	const [contactData, setContactData] = useState<ContactData>({
 		name: "", email: "", city: "", postcode: "", houseNumber: "", street: ""
 	});
@@ -81,7 +81,8 @@ const PaymentView: FC = () => {
 				...contact,
 				customerName: contact.name,
 				items: items.map(({quantity, product}) => ({quantity, productId: product.id}))
-			}).then(() => {
+			}).then(result => {
+				setCreateOrderResult(result)
 				localStorage.removeItem("contactData");
 				clearBasket();
 			})

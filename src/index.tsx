@@ -18,6 +18,7 @@ import PaymentView from "./views/PaymentView/PaymentView";
 import AccountInfoView from "./views/AccountInfoView/AccountInfoView";
 import OrdersView from "./views/OrdersView/OrdersView";
 import LandingPage from "./views/LandingPage/LandingPage";
+import SignUpView from "./views/SignUpView/SignUpView";
 
 
 
@@ -38,6 +39,7 @@ root.render(
                             <Route path="/basket" element={<BasketView/>}/>
                             <Route path="/payment" element={<PaymentView/>}/>
                             <Route path="/signIn" element={<SignInView/>}/>
+                            <Route path="/signUp" element={<SignUpView/>}/>
                             <Route path="/account" element={<AccountInfoView/>} />
                             <Route path="/orders" element={<OrdersView/>} />
                             <Route path="/"  element={<LandingPage/>}/>
