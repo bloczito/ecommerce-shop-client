@@ -50,9 +50,6 @@ export interface AccountData {
 	city?: string;
 	street?: string;
 	postcode?: string;
-
-	// password: string;
-	// confirmPassword: string;
 }
 
 export interface Order {

@@ -35,7 +35,7 @@ const CardItem: FC<{item: CartItem} & CardProps> = ({item, ...props}) => (
 					</Typography>
 
 					<Typography variant="body2" mt={2}>
-						{item.product?.description && item.product?.description}
+						{!!item.product?.description && item.product?.description}
 					</Typography>
 				</Box>
 			</Box>
