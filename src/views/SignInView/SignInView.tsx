@@ -16,9 +16,10 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
 import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
-import { validateEmail } from "../SignUpView/SignUpView";
 import { userApi } from "../../api/UserApi";
 import { UserContext } from "../../context/UserContext";
+import {validate} from "email-validator";
+
 
 const INPUT_WIDTH = 400;
 
@@ -46,7 +47,7 @@ const SignInView: FC = () => {
 		if (email === "") {
 			setErrors(prevState => ({...prevState, email: "Musisz podać email"}));
 			isError = true;
-		} else if (!validateEmail(email)) {
+		} else if (!validate(email)) {
 			setErrors(prevState => ({...prevState, email: "Podaj prawidłowy adres email"}))
 			isError = true;
 		} else {

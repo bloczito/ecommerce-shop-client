@@ -2,15 +2,13 @@ import { FC, useState } from "react";
 import { Button, Container, Grid, setRef, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { userApi } from "../../api/UserApi";
+import {validate} from "email-validator";
 
 
 const WIDTH = 400;
 
 const isInvalid = (field: string) => field == undefined  || field === ""
 
-export const validateEmail = (email: string) => {
-	return (new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')).test(email.toLowerCase())
-};
 
 const SignUpView: FC = () => {
 
@@ -36,7 +34,7 @@ const SignUpView: FC = () => {
 		if (isInvalid(email)) {
 			setError(prevState => ({ ...prevState, email: "Musisz podać email" }));
 			isError = true;
-		} else if (!validateEmail(email)) {
+		} else if (!validate(email)) {
 			setError(prevState => ({ ...prevState, email: "Podaj prawidłowy adres email" }));
 			isError = true;
 		} else {
