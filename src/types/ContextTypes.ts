@@ -29,6 +29,7 @@ export interface BasketContextState {
 export interface UserContextState {
 	token?: string;
 	signOut: () => void;
+	signIn: (token: string) => void;
 }
 
 export interface PaymentContextState {

@@ -8,7 +8,7 @@ const axios = axiosFactory.create({
 	// transformResponse:
 
 	headers: {
-		// "Access-Control-Allow-Origin": "*",
+		// "Access-Control-Allow-Origin": "http://localhost:8080",
 		// "Authorization": Cookies.ge
 	}
 

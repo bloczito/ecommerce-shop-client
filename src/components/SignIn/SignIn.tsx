@@ -25,8 +25,7 @@ const SignIn: FC = () => {
 				style={{minHeight: 600}}
 				gap={5}
 			>
-				<GoogleLoginButton style={{width: 500}} onClick={() => handleRedirect("http://localhost:8080/login")}/>
-				<GithubLoginButton style={{width: 500}} onClick={() => handleRedirect("http://localhost:8080/login/github")}/>
+
 			</Grid>
 		</Box>
 	)

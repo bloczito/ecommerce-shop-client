@@ -100,3 +100,17 @@ export interface CreateOrderResult {
 	orderId: number;
 	orderNumber: string;
 }
+
+export interface SignUpDto {
+	email: string;
+	password: string;
+	name?: string;
+	street?: string;
+	postcode?: string;
+	city?: string;
+}
+
+export interface SignInDto {
+	email: string;
+	password: string;
+}
