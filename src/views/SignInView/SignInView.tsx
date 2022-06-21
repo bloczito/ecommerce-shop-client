@@ -27,7 +27,7 @@ const SignInView: FC = () => {
 	const [isPwdVisible, setIsPwdVisible] = useState<boolean>(false);
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [errors, setErrors] = useState<{email?: string, pwd?: string}>({})
+	const [errors, setErrors] = useState<{email?: string, pwErr?: string}>({})
 	const [authError, setAuthError] = useState<string | undefined>(undefined)
 
 	const navigate = useNavigate();
@@ -55,13 +55,13 @@ const SignInView: FC = () => {
 
 
 		if (password === "") {
-			setErrors(prevState => ({...prevState, pwd: "Podaj hasło"}));
+			setErrors(prevState => ({...prevState, pwErr: "Podaj hasło"}));
 			isError = true;
 		} else if (password.length < 8) {
-			setErrors(prevState => ({...prevState, pwd: "Hasło powinno zawierać pomiędzy 8 a 24 znaki"}));
+			setErrors(prevState => ({...prevState, pwErr: "Hasło powinno zawierać pomiędzy 8 a 24 znaki"}));
 			isError = true;
 		} else {
-			setErrors(prevState => ({...prevState, pwd: undefined}));
+			setErrors(prevState => ({...prevState, pwErr: undefined}));
 		}
 
 		if (!isError) {
@@ -121,8 +121,8 @@ const SignInView: FC = () => {
 					}}
 					value={password}
 					onChange={e => setPassword(e.target.value)}
-					error={!!errors.pwd}
-					helperText={errors.pwd}
+					error={!!errors.pwErr}
+					helperText={errors.pwErr}
 				/>
 
 				{authError && (
