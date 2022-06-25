@@ -27,6 +27,11 @@ const theme = createTheme({
 			primary: "#000",
 			secondary: "rgba(0,0,0,0.6)",
 		}
+	},
+	typography: {
+		button: {
+			textTransform: "none"
+		}
 	}
 });
 

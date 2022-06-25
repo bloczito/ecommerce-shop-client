@@ -17,6 +17,7 @@ const BasketItemCard: React.FC<BasketItemProps> = ({item, summary}) => {
 
 	return (
 		<Card
+			className="basketItemCard"
 			elevation={0}
 			sx={{
 				display: "flex",
@@ -86,6 +87,7 @@ const BasketItemCard: React.FC<BasketItemProps> = ({item, summary}) => {
 
 							<Box sx={{width: "100%", display: "flex", justifyContent: "flex-end"}}>
 								<IconButton
+									className="removeBtn"
 									color="error"
 									onClick={() => removeItem(product.id, true)}
 									sx={{width: 55}}

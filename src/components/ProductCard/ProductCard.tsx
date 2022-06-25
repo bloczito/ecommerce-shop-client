@@ -11,7 +11,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
 	const navigate = useNavigate()
 
 	return (
-		<Card sx={{maxWidth: 345}} elevation={0} style={{marginBottom: 20}}>
+		<Card sx={{maxWidth: 345}} elevation={0} style={{marginBottom: 20}} className="productCard">
 			<CardActionArea onClick={() => navigate(`/products/${product.id}`)}>
 				<CardMedia
 					component="img"

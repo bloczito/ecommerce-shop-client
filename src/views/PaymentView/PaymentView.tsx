@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { UserContext } from "../../context/UserContext";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ContactData, CreateOrderResult } from "../../types";
+import { AccountData, ContactData, CreateOrderResult } from "../../types";
 import { useController, UseControllerProps, useForm } from "react-hook-form";
 import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -27,6 +27,7 @@ import { ordersApi } from "../../api/OrdersApi";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const steps = ["Zaloguj się", "Adres", "Podsumowanie", "Płatność", "Gotowe"]
+
 
 
 const schema = object({
@@ -49,6 +50,7 @@ const CustomInput: React.FC<UseControllerProps<ContactData> & TextFieldProps> = 
 			{...field}
 			required={false}
 			label={label && `${props.required ? label + " *" : label }`}
+			InputLabelProps={{shrink: !!field.value || props.focused}}
 			fullWidth
 		/>
 	)
@@ -69,7 +71,16 @@ const PaymentView: FC = () => {
 	const [clientSecret, setClientSecret] = useState<string | undefined>(undefined);
 	const [createOrderResult, setCreateOrderResult] = useState<CreateOrderResult | null>(null);
 	const [contactData, setContactData] = useState<ContactData>({
-		name: "", email: "", city: "", postcode: "", houseNumber: "", street: ""
+		name: "", email: "", city: "", postcode: "", street: ""
+	});
+
+	const createPayment = (amount: number) => {
+		paymentApi.createPayment(amount).then(res => setClientSecret(res.clientSecret));
+	}
+
+	const {handleSubmit, control, setValue} = useForm<ContactData>({
+		mode: "onBlur",
+		resolver: yupResolver(schema)
 	});
 
 	useEffect(() => {
@@ -86,17 +97,19 @@ const PaymentView: FC = () => {
 				clearBasket();
 			})
 		}
+
+		// userApi.fetchUserInfo()
+		// 	.then(({city, customerName, postcode, street, email}) => {
+		// 		setValue("name", customerName || "")
+		// 		setValue("city", city || "")
+		// 		setValue("street", street || "")
+		// 		setValue("email", email || "")
+		// 		setValue("postcode", postcode || "")
+		// 	})
 	}, [])
 
 
-	const createPayment = (amount: number) => {
-		paymentApi.createPayment(amount).then(res => setClientSecret(res.clientSecret));
-	}
 
-	const {handleSubmit, control} = useForm<ContactData>({
-		mode: "onBlur",
-		resolver: yupResolver(schema)
-	});
 
 	useEffect(() => {
 		if (activeStep < 4) {
@@ -114,6 +127,7 @@ const PaymentView: FC = () => {
 
 
 	const handleSubmitForm = (values: ContactData) => {
+		console.log(values)
 		setContactData(values);
 		setActiveStep(prevState => prevState + 1);
 		localStorage.setItem("contactData", JSON.stringify(values));
@@ -122,7 +136,7 @@ const PaymentView: FC = () => {
 
 	return (
 		<Container maxWidth="lg">
-			<form autoComplete="off" onSubmit={handleSubmit(handleSubmitForm)}>
+			<form autoComplete="off" id="payment-form" onSubmit={handleSubmit(handleSubmitForm)}>
 				<Stepper activeStep={activeStep} sx={{marginBottom: 5, marginTop: 5}}>
 					{steps.map((label) => (
 						<Step key={label}>
@@ -177,31 +191,18 @@ const PaymentView: FC = () => {
 								<CustomInput
 									control={control}
 									name="street"
-									label="Ulica"
+									label="Ulica i nr domu"
 									fullWidth
 								/>
 							</Grid>
 
 							<Grid item width={500}>
-								<Grid container direction="row" spacing={2}>
-									<Grid item xs={4}>
-										<CustomInput
-											control={control}
-											name="houseNumber"
-											label="Numer domu"
-											fullWidth
-										/>
-									</Grid>
-
-									<Grid item xs={8}>
-										<CustomInput
-											control={control}
-											name="postcode"
-											label="Kod pocztowy"
-											fullWidth
-										/>
-									</Grid>
-								</Grid>
+								<CustomInput
+									control={control}
+									name="postcode"
+									label="Kod pocztowy"
+									fullWidth
+								/>
 							</Grid>
 						</Grid>
 					)}
@@ -237,7 +238,7 @@ const PaymentView: FC = () => {
 									Adres dostawy:
 								</Typography>
 								<Typography>
-									{contactData.street} {contactData.houseNumber} <br/>
+									{contactData.street} <br/>
 									{contactData.postcode}, {contactData.city} <br/>
 								</Typography>
 							</Grid>
@@ -289,10 +290,10 @@ const PaymentView: FC = () => {
 						</Button>
 						<Button
 							variant="contained"
-							type={activeStep === 1 ? "submit" : "button"}
+							type={"submit"}
 							disableElevation
 							disabled={activeStep === 4}
-							onClick={() => {if (activeStep !== 1) setActiveStep(prevState => prevState + 1)}}
+							onClick={() => { if (activeStep !== 1) setActiveStep(prevState => prevState + 1) }}
 						>
 							Dalej
 						</Button>

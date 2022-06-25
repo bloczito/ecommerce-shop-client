@@ -65,7 +65,7 @@ const NavbarCategory:React.FC<NavbarCategoryProps> = ({category}) => {
 						  style={{textDecoration: "none",  color: "black"}}
 					  >
 						  <MenuItem onClick={handleHideMenu}>
-							  {s.name}
+							  {s.title}
 						  </MenuItem>
 					  </Link>
 				  ))}

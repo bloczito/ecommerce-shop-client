@@ -31,22 +31,7 @@ root.render(
     // <React.StrictMode>
             <BrowserRouter>
                 <AppContextProvider>
-                    <>
-                        <Navbar/>
-                        <Routes>
-                            <Route path="/products/:id" element={<ProductsDetailsView/>}/>
-                            <Route path="/products" element={<ProductsView/>}/>
-                            <Route path="/basket" element={<BasketView/>}/>
-                            <Route path="/payment" element={<PaymentView/>}/>
-                            <Route path="/signIn" element={<SignInView/>}/>
-                            <Route path="/signUp" element={<SignUpView/>}/>
-                            <Route path="/account" element={<AccountInfoView/>} />
-                            <Route path="/orders" element={<OrdersView/>} />
-                            <Route path="/"  element={<LandingPage/>}/>
-                        </Routes>
-                        <ScrollTop/>
-                    </>
-				{/*<Notification/>*/}
+                    <App/>
                 </AppContextProvider>
             </BrowserRouter>
     // </React.StrictMode>

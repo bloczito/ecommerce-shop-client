@@ -56,7 +56,7 @@ const SignInView: FC = () => {
 
 
 		if (password === "") {
-			setErrors(prevState => ({...prevState, pwErr: "Podaj hasło"}));
+			setErrors(prevState => ({...prevState, pwErr: "Musisz podać hasło"}));
 			isError = true;
 		} else if (password.length < 8) {
 			setErrors(prevState => ({...prevState, pwErr: "Hasło powinno zawierać pomiędzy 8 a 24 znaki"}));
