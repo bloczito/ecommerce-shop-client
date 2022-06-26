@@ -21,14 +21,6 @@ describe("Landing Page", () => {
             .first()
             .find("div.MuiTypography-subtitle1")
             .should("have.length", 1)
-
-        // const els = await cy.get("div.MuiTypography-subtitle1")
-        // const text = els[0].querySelector("div.MuiTypography-subtitle1").textContent
-        // console.log(text)
-        // cy.visit("http://localhost:3000")
-        //
-        // cy.get("div.MuiTypography-subtitle1")
-        //     .should("not.have.text", text)
     });
 
     it('should render logged navbar', function () {

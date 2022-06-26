@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Box, Container, Divider, Typography } from "@mui/material";
+import { Container, Divider, Typography } from "@mui/material";
 import { ordersApi } from "../../api/OrdersApi";
 import { Order } from "../../types";
 import OrderCard from "../../components/OrderCard/OrderCard";

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button, ButtonProps, Icon } from "@mui/material";
+import { Button, ButtonProps} from "@mui/material";
 
 
 const GoogleButton: FC<ButtonProps> = (props) => (

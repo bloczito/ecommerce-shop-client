@@ -13,3 +13,6 @@
 npm-debug.log
 
 results
+cypress
+/cypress
+cypress.json

@@ -6,19 +6,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ProductsView from "./views/ProductsView/ProductsView";
-import Navbar from "./components/Navbar/Navbar";
-import ScrollTop from "./components/ScrollTop/ScrollTop";
-import ProductsDetailsView from "./views/ProductsDetailsView/ProductsDetailsView";
+import { BrowserRouter } from "react-router-dom";
 import AppContextProvider from "./context";
-import BasketView from "./views/BasketView/BasketView";
-import SignInView from "./views/SignInView/SignInView";
-import PaymentView from "./views/PaymentView/PaymentView";
-import AccountInfoView from "./views/AccountInfoView/AccountInfoView";
-import OrdersView from "./views/OrdersView/OrdersView";
-import LandingPage from "./views/LandingPage/LandingPage";
-import SignUpView from "./views/SignUpView/SignUpView";
 
 
 
