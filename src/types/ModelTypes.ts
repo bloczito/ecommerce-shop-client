@@ -40,13 +40,12 @@ export interface ContactData {
 	email: string,
 	city: string,
 	street: string,
-	houseNumber: string,
 	postcode: string
 }
 
 export interface AccountData {
 	customerName?: string;
-
+	email?: string;
 	city?: string;
 	street?: string;
 	postcode?: string;

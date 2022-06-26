@@ -4,9 +4,9 @@ import { NotificationContextProvider } from "./NotificationContext";
 import { BasketContextProvider } from "./BasketContext";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { ShopContextProvider } from "./ShopContext";
-import { SnackbarProvider } from "notistack";
 import { UserContextProvider } from "./UserContext";
 import { useNavigate } from "react-router-dom";
+
 
 
 const theme = createTheme({
@@ -26,6 +26,11 @@ const theme = createTheme({
 		text: {
 			primary: "#000",
 			secondary: "rgba(0,0,0,0.6)",
+		}
+	},
+	typography: {
+		button: {
+			textTransform: "none"
 		}
 	}
 });
@@ -47,13 +52,11 @@ const AppContextProvider: React.FC<{children: ReactElement}> = ({children}) => {
 			<ShopContextProvider>
 				<UserContextProvider>
 					<ProductsContextProvider>
-						{/*<NotificationContextProvider>*/}
-							<BasketContextProvider>
-								<SnackbarProvider maxSnack={5} variant="success" autoHideDuration={1500}>
-										{children}
-								</SnackbarProvider>
-							</BasketContextProvider>
-						{/*</NotificationContextProvider>*/}
+						<BasketContextProvider>
+								<NotificationContextProvider>
+									{children}
+								</NotificationContextProvider>
+						</BasketContextProvider>
 					</ProductsContextProvider>
 				</UserContextProvider>
 			</ShopContextProvider>

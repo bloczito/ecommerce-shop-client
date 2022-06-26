@@ -13,12 +13,13 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
 import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
 import { userApi } from "../../api/UserApi";
 import { UserContext } from "../../context/UserContext";
 import {validate} from "email-validator";
+import GoogleButton from "../../components/GoogleButton/GoogleButton";
+import GitHubButton from "../../components/GitHubButton/GitHubButton";
 
 
 const INPUT_WIDTH = 400;
@@ -56,7 +57,7 @@ const SignInView: FC = () => {
 
 
 		if (password === "") {
-			setErrors(prevState => ({...prevState, pwErr: "Podaj hasło"}));
+			setErrors(prevState => ({...prevState, pwErr: "Musisz podać hasło"}));
 			isError = true;
 		} else if (password.length < 8) {
 			setErrors(prevState => ({...prevState, pwErr: "Hasło powinno zawierać pomiędzy 8 a 24 znaki"}));
@@ -148,16 +149,16 @@ const SignInView: FC = () => {
 					<Typography>Lub</Typography>
 				</Divider>
 
-				<GoogleLoginButton
-					style={{width: INPUT_WIDTH}}
-					text="Zaloguj przez Google"
+				<GoogleButton
+					sx={{width: INPUT_WIDTH}}
 					onClick={() => handleRedirect("http://localhost:8080/login")}
 				/>
-				<GithubLoginButton
-					style={{width: INPUT_WIDTH}}
-					text="Zaloguj przez GitHub"
+
+				<GitHubButton
+					sx={{width: INPUT_WIDTH}}
 					onClick={() => handleRedirect("http://localhost:8080/login/github")}
 				/>
+
 			</Grid>
 
 

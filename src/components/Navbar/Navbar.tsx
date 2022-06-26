@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
 										</Typography>
 									</Button>
 
-									<Box sx={{display: "flex", flexGrow: 1, marginLeft: 2, gap: 2}}>
+									<Box sx={{display: "flex", flexGrow: 1, marginLeft: 2, gap: 2}} id="categories-box">
 										{categories?.map(c => (
 											<NavbarCategory
 												key={c.name}
@@ -83,6 +83,7 @@ const Navbar: React.FC = () => {
 
 								<IconButton
 									color="inherit"
+									id="basketBtn"
 									onClick={() => navigation("/basket")}
 								>
 									<Badge badgeContent={items.length} color="secondary">

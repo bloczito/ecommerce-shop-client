@@ -14,6 +14,7 @@ const QuantityPicker: React.FC<QuantityPickerProps> = ({quantity, removeItem, ad
 			<IconButton
 				onClick={addItem}
 				color="inherit"
+				id="increaseBtn"
 			>
 				<AddBoxIcon/>
 			</IconButton>
@@ -30,6 +31,7 @@ const QuantityPicker: React.FC<QuantityPickerProps> = ({quantity, removeItem, ad
 			<IconButton
 				onClick={removeItem}
 				color="inherit"
+				id="decreaseBtn"
 			>
 				<IndeterminateCheckBoxIcon/>
 			</IconButton>

@@ -4,16 +4,16 @@ import { NotificationContext } from "../../context/NotificationContext";
 
 
 const Notification: React.FC = () => {
-	const {message, closeNotification} = useContext(NotificationContext)
+	const {message, isOpen, closeNotification, type} = useContext(NotificationContext)
 	return (
 		<Snackbar
-			open={!!message}
-			autoHideDuration={4000}
+			open={isOpen}
+			autoHideDuration={1500}
 			onClose={closeNotification}
 		>
 			<Alert
 				onClose={closeNotification}
-				security="success"
+				severity={type}
 				sx={{width: "100%"}}
 			>
 				{message}
