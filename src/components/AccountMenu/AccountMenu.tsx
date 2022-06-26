@@ -1,5 +1,5 @@
 import React, { FC, useContext, useState } from "react";
-import { Divider, IconButton, Link, Menu, MenuItem } from "@mui/material";
+import { Divider, IconButton, Menu, MenuItem } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
