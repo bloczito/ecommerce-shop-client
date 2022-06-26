@@ -6,14 +6,14 @@ import { Button, Container, Grid, Typography } from "@mui/material";
 import Image from "../../components/Image/Image";
 import { fetchProductById } from "../../api/ProductsApi";
 import { BasketContext } from "../../context/BasketContext";
-import { useSnackbar } from "notistack";
+import { NotificationContext } from "../../context/NotificationContext";
 
 const ProductsDetailsView: React.FC = () => {
 	const [product, setProduct] = useState<Product | null>(null);
-	const {enqueueSnackbar} = useSnackbar();
 	const {id}  = useParams<ProductId>()
 	const {getById} = useContext(ProductsContext)
 	const {addItem} = useContext(BasketContext)
+	const {openNotification} = useContext(NotificationContext)
 
 	useEffect(() => {
 		if (id && isNumeric(id)) {
@@ -30,7 +30,7 @@ const ProductsDetailsView: React.FC = () => {
 	const handleAddItem = () => {
 		if (product) {
 			addItem(product)
-			enqueueSnackbar("Dodano do koszyka!", {variant: "success"})
+			openNotification("Dodano do koszyka!", "success")
 		}
 	}
 

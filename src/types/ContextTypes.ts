@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { BasketItem, CategoryWithSub, Product } from "./index";
 import { NotificationType } from "./MiscTypes";
+import { AlertColor } from "@mui/material";
 
 export interface ShopContextState {
 	categories: CategoryWithSub[];
@@ -15,7 +16,8 @@ export interface ProductsContextState {
 export interface NotificationContextState {
 	isOpen: boolean;
 	message: string | null;
-	openNotification: (msg: string, type?: NotificationType) => void;
+	type: AlertColor;
+	openNotification: (msg: string, type?: AlertColor) => void;
 	closeNotification: () => void;
 }
 

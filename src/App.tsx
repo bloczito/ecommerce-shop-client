@@ -13,6 +13,7 @@ import SignUpView from "./views/SignUpView/SignUpView";
 import LandingPage from "./views/LandingPage/LandingPage";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
 import { UserContext } from "./context/UserContext";
+import Notification from "./components/Notification/Notification";
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
                 <Route path="/"  element={<LandingPage/>}/>
             </Routes>
             <ScrollTop/>
+            <Notification/>
         </>
     )
 }

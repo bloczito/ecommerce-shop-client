@@ -58,20 +58,6 @@ describe("Payment", () => {
         cy.get("input[name='street']").clear().type("kwiatowa 9")
         cy.get("input[name='postcode']").clear().type("11-111")
         cy.contains("button", "Dalej").click().click()
-        cy.wait(5000)
-
-        cy.getWithinIframe(stripeCard).type('4242424242424242')
-        cy.getWithinIframe(stripeDate).type('1234')
-        cy.getWithinIframe(stripeCvc).type('123')
-
-        // cy.contains("button", "Dalej").click()
-        // cy.wait(2000)
-        // cy.get("#card-element").within(() => {
-        // })
-        // cy.fillElementsInput("cardNumber", "4242424242424242")
-        // cy.get("iframe").find(stripeCard).type("4242424242424242")
-        // cy.get("input").eq(1).type("1224")
-        // cy.get("input").eq(2).type("123")
     });
 
 

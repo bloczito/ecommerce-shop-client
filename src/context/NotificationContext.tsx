@@ -1,10 +1,11 @@
 import { NotificationContextState } from "../types";
 import React, { useState } from "react";
-import { NotificationType } from "../types/MiscTypes";
+import { AlertColor } from "@mui/material";
 
 
 const defaultState: NotificationContextState = {
 	isOpen: false,
+	type: "info",
 	message: null,
 	openNotification: () => console.error("No function defined"),
 	closeNotification: () => console.error("No function defined")
@@ -15,11 +16,12 @@ export const NotificationContextProvider: React.FC<{children: React.ReactElement
 	const [message, setMessage] = useState<{
 		isOpen: boolean,
 		content: string | null,
-		type: NotificationType
+		type: AlertColor
 	}>({isOpen: false, content: null, type: "info"});
 
 	const providerValue: NotificationContextState = {
 		isOpen: message.isOpen,
+		type: message.type,
 		message: message.content,
 		openNotification: (msg, msgType) => {
 			setMessage({

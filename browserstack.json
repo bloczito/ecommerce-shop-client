@@ -1,0 +1,32 @@
+{
+    "auth": {
+        "username": "bartoszkrawiec_KJy3a4",
+        "access_key": "RRoPXbeFWQ3uGvdWiBrU"
+    },
+    "browsers": [
+        {
+            "browser": "chrome",
+            "os": "OS X Mojave",
+            "versions": [
+                "latest"
+            ]
+        }
+    ],
+    "run_settings": {
+        "cypress_config_file": "cypress.json",
+        "project_name": "Shopp",
+        "build_name": "Shopp-test",
+        "exclude": [],
+        "parallels": 1,
+        "npm_dependencies": {},
+        "package_config_options": {},
+        "headless": true
+    },
+    "connection_settings": {
+        "local": true,
+        "local_identifier": null,
+        "local_mode": null,
+        "local_config_file": null
+    },
+    "disable_usage_reporting": false
+}

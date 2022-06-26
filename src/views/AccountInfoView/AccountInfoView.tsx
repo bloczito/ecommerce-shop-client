@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useContext, useEffect} from "react";
 import { Button, Container, Divider, Grid, TextField, TextFieldProps, Typography } from "@mui/material";
 import { useController, UseControllerProps, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userApi } from "../../api/UserApi";
 import { AccountData } from "../../types";
-import { useSnackbar } from "notistack";
+import { NotificationContext } from "../../context/NotificationContext";
 
 
 
@@ -42,8 +42,7 @@ const CustomInput: React.FC<UseControllerProps<AccountData> & TextFieldProps> = 
 
 
 const AccountInfoView: FC = () => {
-
-	const {enqueueSnackbar} = useSnackbar();
+	const {openNotification} = useContext(NotificationContext)
 	const {control, handleSubmit, setValue} = useForm<AccountData>({
 		mode: "onBlur",
 		resolver: yupResolver(schema)
@@ -71,10 +70,10 @@ const AccountInfoView: FC = () => {
 		userApi.updateUserInfo(values)
 			.then(
 				() => {
-					enqueueSnackbar("Zakualizowano!", {variant: "success"})
+					openNotification("Zakualizowano!",  "success")
 					loadData()
 				},
-				() => enqueueSnackbar("Nie udało się zapisać danych", {variant: "error"})
+				() => openNotification("Nie udało się zapisać danych",  "error")
 			)
 
 	}
