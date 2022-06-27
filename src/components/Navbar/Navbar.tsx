@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
 											marginRight={3}
 											color="black"
 										>
-											Shopp
+											Shoppee
 										</Typography>
 									</Button>
 
