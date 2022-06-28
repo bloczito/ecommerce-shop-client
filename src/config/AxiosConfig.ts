@@ -1,7 +1,7 @@
 import axiosFactory from "axios";
 import Cookies from "js-cookie";
 
-export const BASE_URL = "https://shopp-server.azurewebsites.net/"
+export const BASE_URL = "https://shopp-server.azurewebsites.net"
 
 const axios = axiosFactory.create({
 	baseURL: BASE_URL
