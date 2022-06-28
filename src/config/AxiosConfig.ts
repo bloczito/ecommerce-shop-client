@@ -5,6 +5,7 @@ export const BASE_URL = "https://shopp-server.azurewebsites.net"
 
 const axios = axiosFactory.create({
 	baseURL: BASE_URL
+
 });
 
 axios.interceptors.request.use(config => {
