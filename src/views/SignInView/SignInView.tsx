@@ -20,6 +20,7 @@ import { UserContext } from "../../context/UserContext";
 import {validate} from "email-validator";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
 import GitHubButton from "../../components/GitHubButton/GitHubButton";
+import { BASE_URL } from "../../config/AxiosConfig";
 
 
 const INPUT_WIDTH = 400;
@@ -151,12 +152,12 @@ const SignInView: FC = () => {
 
 				<GoogleButton
 					sx={{width: INPUT_WIDTH}}
-					onClick={() => handleRedirect("http://localhost:8080/login")}
+					onClick={() => handleRedirect(`${BASE_URL}/login`)}
 				/>
 
 				<GitHubButton
 					sx={{width: INPUT_WIDTH}}
-					onClick={() => handleRedirect("http://localhost:8080/login/github")}
+					onClick={() => handleRedirect(`${BASE_URL}/login/github`)}
 				/>
 
 			</Grid>

@@ -1,9 +1,10 @@
 import axiosFactory from "axios";
 import Cookies from "js-cookie";
 
+export const BASE_URL = "https://shopp-server.azurewebsites.net/"
 
 const axios = axiosFactory.create({
-	baseURL: "https://shopp-server.azurewebsites.net/",
+	baseURL: BASE_URL,
 });
 
 axios.interceptors.request.use(config => {
