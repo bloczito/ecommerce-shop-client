@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 
 const axios = axiosFactory.create({
-	baseURL: "http://localhost:8080",
+	baseURL: "https://shopp-server.azurewebsites.net/",
 });
 
 axios.interceptors.request.use(config => {
