@@ -40,6 +40,7 @@ const SignInView: FC = () => {
 		if (searchParams.get("redirectPayment") != null && searchParams.get("redirectPayment") === "true") {
 			localStorage.setItem("redirectUrl", "/payment")
 		}
+
 		window.location.assign(url)
 	}
 
