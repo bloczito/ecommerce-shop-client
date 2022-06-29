@@ -1,7 +1,8 @@
 import { UserContextState } from "../types";
-import { createContext, FC, ReactElement, useState } from "react";
+import { createContext, FC, ReactElement, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import moment from "moment";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const defaultState: UserContextState = {
@@ -15,6 +16,21 @@ export const UserContext = createContext(defaultState);
 
 export const UserContextProvider: FC<{children: ReactElement}> = ({children}) => {
 	const [token, setToken] = useState<string | undefined>(Cookies.get("auth-token"));
+	const location = useLocation();
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		const params = new URLSearchParams(location.search)
+		const token = params.get("token")
+		console.log(params)
+		console.log(token)
+
+		if (token != null) {
+			signIn(token)
+			params.delete("token")
+			navigate(`${location.pathname}?${params.toString()}`)
+		}
+	}, [])
 
 	const signOut = () => {
 		Cookies.remove("auth-token");
