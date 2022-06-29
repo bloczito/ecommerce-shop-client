@@ -35,7 +35,7 @@ type Errors = {
 }
 
 
-const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISH_ID!!}`, {locale: "pl"})
+const stripePromise = loadStripe(`pk_test_51L6ZlIIf1k8w6j4FpBDDYt4ZEqrX2DC82VcavU0kqUBWxqoH7xqeUj2qOLf2rKfYOSTs2nIJpXg7up4zoGnAJxpq00kEBbwt9u`, {locale: "pl"})
 
 
 const PaymentView: FC = () => {
