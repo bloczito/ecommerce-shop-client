@@ -38,7 +38,6 @@ type Errors = {
 const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISH_ID!!}`, {locale: "pl"})
 
 
-
 const PaymentView: FC = () => {
 	const {token} = useContext(UserContext);
 	const {items, clearBasket} = useContext(BasketContext)
