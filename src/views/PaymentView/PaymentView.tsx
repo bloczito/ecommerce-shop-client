@@ -56,6 +56,10 @@ const PaymentView: FC = () => {
 		paymentApi.createPayment(amount).then(res => setClientSecret(res.clientSecret));
 	}
 
+	useEffect(() => {
+		console.log(process.env)
+	}, [])
+
 
 
 	useEffect(() => {

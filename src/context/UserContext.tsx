@@ -22,8 +22,6 @@ export const UserContextProvider: FC<{children: ReactElement}> = ({children}) =>
 	useEffect(() => {
 		const params = new URLSearchParams(location.search)
 		const token = params.get("token")
-		console.log(params)
-		console.log(token)
 
 		if (token != null) {
 			signIn(token)
