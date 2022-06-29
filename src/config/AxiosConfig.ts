@@ -1,6 +1,7 @@
 import axiosFactory from "axios";
 import Cookies from "js-cookie";
 
+export const CLIENT_URL = "https://shopp-app.azurewebsites.net"
 export const BASE_URL = "https://shopp-server.azurewebsites.net"
 // export const BASE_URL = "http://localhost:8080"
 

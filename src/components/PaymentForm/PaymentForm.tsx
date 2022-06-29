@@ -1,6 +1,7 @@
 import React, { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { Alert, Box, Button, Grid } from "@mui/material";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { CLIENT_URL } from "../../config/AxiosConfig";
 
 
 type PaymentFormProps = {
@@ -52,7 +53,7 @@ const PaymentForm: FC<PaymentFormProps> = ({setActiveStep}) => {
 		stripe.confirmPayment({
 			elements,
 			confirmParams: {
-				return_url: "http://localhost:3000/payment?paymentSuccess=true"
+				return_url: `${CLIENT_URL}/payment?paymentSuccess=true`
 			}
 		}).then(({error}) => {
 			if (error.type === "card_error" || error.type === "validation_error") {
