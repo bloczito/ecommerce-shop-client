@@ -153,7 +153,7 @@ const SignInView: FC = () => {
 
 				<GoogleButton
 					sx={{width: INPUT_WIDTH}}
-					onClick={() => handleRedirect(`${BASE_URL}/login`)}
+					onClick={() => handleRedirect(`${BASE_URL}/login/google`)}
 				/>
 
 				<GitHubButton

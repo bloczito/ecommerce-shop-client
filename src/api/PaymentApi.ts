@@ -4,7 +4,7 @@ import { PaymentResponse } from "../types";
 
 
 const createPayment = (amount: number): Promise<PaymentResponse> =>
-	axios.post("/createPayment", {amount})
+	axios.post("/payments", {amount})
 
 
 export const paymentApi = {

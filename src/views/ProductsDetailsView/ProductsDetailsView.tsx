@@ -17,13 +17,13 @@ const ProductsDetailsView: React.FC = () => {
 
 	useEffect(() => {
 		if (id && isNumeric(id)) {
-			const byId = getById(Number(id))
-			if (byId) {
-				setProduct(byId)
-			} else {
+			// const byId = getById(Number(id))
+			// if (byId) {
+			// 	setProduct(byId)
+			// } else {
 				fetchProductById(Number(id))
 					.then(res => setProduct(res))
-			}
+			// }
 		}
 	}, [id])
 

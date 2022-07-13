@@ -3,21 +3,21 @@ import axios from "../config/AxiosConfig";
 
 
 const fetchUserInfo = (): Promise<AccountData> => {
-	return axios.get("/user")
+	return axios.get("/users")
 }
 
 const updateUserInfo = (accountData: AccountData): Promise<void> => {
-	return axios.post("/user", accountData)
+	return axios.put("/users", accountData)
 }
 
 const signUp = (dto: SignUpDto): Promise<void> => {
-	return axios.post("/signUp", dto);
+	return axios.post("/sign_up", dto);
 }
 
 const signIn = (dto: SignInDto): Promise<string> =>
 	axios
 		.post(
-			"/signIn",
+			"/sign_in",
 			dto,
 			{
 				headers: {
@@ -26,7 +26,7 @@ const signIn = (dto: SignInDto): Promise<string> =>
 			}
 		);
 
-const checkEmail = (email: string): Promise<boolean> => axios.get("/isEmailAvailable", {params: { email }})
+const checkEmail = (email: string): Promise<boolean> => axios.get("/is_email_available", {params: { email }})
 
 export const userApi = {
 	fetchUserInfo,

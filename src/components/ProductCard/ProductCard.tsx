@@ -29,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
 					</Typography>
 					<Grid container justifyContent="space-between">
 						<Typography variant="body1">
-							{product.brand.name}
+							{product.brand?.name}
 						</Typography>
 
 						<Typography variant="button">
